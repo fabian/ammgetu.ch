@@ -1,0 +1,126 @@
+:root {
+  --primary: #2381C9;
+  --white: #FFF;
+  --light: #f8f9fa;
+}
+
+body {
+  font-family: "museo-sans", sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3 {
+  font-family: "museo", sans-serif;
+  font-weight: 500;
+}
+
+.container-fluid {
+  margin: 0 30px;
+}
+
+.navbar {
+  z-index: 3;
+}
+
+.navbar-dark .navbar-brand {
+  margin-right: 15px;
+  color: var(--white);
+  z-index: 1000;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+p {
+  max-width: 36rem;
+}
+
+.text-museo {
+  font-family: "museo", sans-serif;
+}
+
+.timetable-entry {
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.btn-outline-light:hover {
+  color: var(--primary);
+}
+
+footer {
+  background-color: var(--light);
+}
+
+.page-kind-home {
+  background-color: var(--primary);
+}
+
+.page-kind-home,
+.page-kind-home h1,
+.page-kind-home a {
+  color: var(--white);
+}
+
+.page-kind-home main {
+  margin-top: 3rem;
+}
+
+.page-kind-home h1 {
+  margin-bottom: 0.3rem;
+}
+
+.page-kind-home h2 {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.page-kind-home .navbar,
+.page-kind-home footer h2 {
+  display: none;
+}
+
+.page-kind-home footer {
+  background-color: var(--primary);
+  margin-top: 0 !important;
+}
+
+@media (min-width: 992px) {
+  .page-kind-home main {
+    margin-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-kind-home main {
+    margin-bottom: 9rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-photo {
+    position: absolute;
+  }
+}
+
+@media (min-width: 1400px) {
+  .home-photo {
+    width: 480px;
+    height: auto;
+  }
+}
+
+#map {
+  position: absolute;
+  left: 0;
+  top: 56px;
+  bottom: 0;
+  width: 100%;
+}

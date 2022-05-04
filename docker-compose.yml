@@ -1,0 +1,17 @@
+---
+services:
+  build:
+    build:
+      context: .
+      target: build
+    command: npm ci
+    volumes:
+      - ".:/src/"
+  web:
+    build:
+      context: .
+    command: server
+    ports:
+      - "1313:1313"
+    volumes:
+      - ".:/src/"

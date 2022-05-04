@@ -1,0 +1,12 @@
+baseURL = "https://ammgetu.ch/2022/"
+title = "AMM Kids 2022"
+canonifyURLs = true
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[module]
+    [[module.mounts]]
+        source = "assets"
+        target = "assets"
+    [[module.mounts]]
+        source = "node_modules/bootstrap/dist"
+        target = "assets/bootstrap"

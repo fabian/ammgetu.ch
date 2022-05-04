@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {{ $bootstrap := resources.Get "bootstrap/css/bootstrap.min.css" | resources.Fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ $bootstrap.Permalink }}">
+
+    {{ $css := resources.Get "css/main.css" | resources.Fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}">
+
+    <link rel="stylesheet" href="https://use.typekit.net/tfn7dak.css">
+
+    <title>{{ block "title" . }}{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}{{ end }}</title>
+
+    {{ block "head" . }}
+
+    {{ end }}
+  </head>
+  <body class="page-kind-{{ .Page.Kind }}">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+      <a class="navbar-brand font-weight-bold text-museo" href="{{ .Site.BaseURL }}">AMM EGT Kids</a>
+    </nav>
+
+    {{ block "main" . }}
+
+    {{ end }}
+
+    {{ block "footer" . }}
+      <footer class="mt-5 py-5">
+        <div class="container-fluid">
+          <h2 class="h5">
+            <a href="{{ .Site.BaseURL }}">AMM Kids</a>
+            <br/>
+            20. und 21. August 2022
+          </h2>
+
+          <ul class="list-unstyled mt-5">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+              <li class="h5 {{ if ($currentPage.IsMenuCurrent "main" .) }}font-weight-bold{{end}}">
+                <a href="{{ .URL }}">{{ .Name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+
+          <ul class="list-unstyled mt-5">
+            <li><a href="https://www.turnsport.ag/" target="_blank">Turnsport Aargau</a></li>
+            <li><a href="https://tvniederrohrdorf.ch/turnverein/" target="_blank">Turnverein Niederrohrdorf</a></li>
+          </ul>
+        </div>
+      </footer>
+    {{ end }}
+
+  </body>
+</html>
