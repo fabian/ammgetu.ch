@@ -14,11 +14,6 @@ jobs:
 
     - uses: actions/checkout@v3
 
-    - name: Upgrade SSH
-      run: |
-        sudo apt-get update
-        sudo apt-get install ssh
-
     - uses: actions/setup-node@v3
     - run: npm ci
 
@@ -31,5 +26,5 @@ jobs:
         eval $(ssh-agent -s)
         mkdir -p ~/.ssh
         echo "${{ env.SSH_HOST_KEY }}" >> ~/.ssh/known_hosts
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
         rsync -avz --delete public/ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:/var/www/ammgetu/2022/
