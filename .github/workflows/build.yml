@@ -1,5 +1,10 @@
 on: push
 
+env:
+  SSH_USER: debian
+  SSH_HOST: wernstrom.ch
+  SSH_HOST_KEY: wernstrom.ch ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKTMFCuP1ZqBZgznqAHHUGQP1wbAJeb+YEIUw9ZPNwFo
+
 jobs:
   build:
 
@@ -14,3 +19,12 @@ jobs:
 
     - uses: peaceiris/actions-hugo@v2
     - run: hugo
+
+    - name: Deploy via SSH
+      if: github.ref == 'refs/heads/main'
+      run: |
+        eval $(ssh-agent -s)
+        mkdir -p ~/.ssh
+        echo "${{ env.SSH_HOST_KEY }}" >> ~/.ssh/known_hosts
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
+        rsync -avz --delete public/ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:/var/www/ammgetu/2022/
